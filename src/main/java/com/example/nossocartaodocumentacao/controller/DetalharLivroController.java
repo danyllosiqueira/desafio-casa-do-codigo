@@ -1,6 +1,5 @@
 package com.example.nossocartaodocumentacao.controller;
 
-import com.example.nossocartaodocumentacao.controller.factory.LivroFactory;
 import com.example.nossocartaodocumentacao.controller.response.LivroResponse;
 import com.example.nossocartaodocumentacao.model.Livro;
 import com.example.nossocartaodocumentacao.repository.LivroRepository;
@@ -28,7 +27,7 @@ public class DetalharLivroController {
 
         Livro livro = livroRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro inexistente"));
 
-        LivroResponse response = LivroFactory.toResponse(livro);
+        LivroResponse response = LivroResponse.toResponse(livro);
 
         return ResponseEntity.ok(response);
     }

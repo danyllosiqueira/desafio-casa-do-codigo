@@ -1,18 +1,12 @@
 package com.example.nossocartaodocumentacao.controller.response;
 
-import com.example.nossocartaodocumentacao.controller.request.LivroRequest;
 import com.example.nossocartaodocumentacao.model.Livro;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.validator.constraints.ISBN;
-import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public record LivroResponse(
 
@@ -37,4 +31,30 @@ public record LivroResponse(
 
         String autor
 ) {
+        public static LivroResponse toResponse(Livro livro) {
+                return new LivroResponse(livro.getId(),
+                        livro.getTitulo(),
+                        livro.getResumo(),
+                        livro.getSumario(),
+                        livro.getPreco(),
+                        livro.getNumeroDePaginas(),
+                        livro.getIsbn(),
+                        livro.getDataPublicacao(),
+                        livro.getCategoria().getNome(),
+                        livro.getAutor().getNome());
+        }
+
+        public static List<LivroResponse> toResponseList(List<Livro> livrosList) {
+                return livrosList.stream().map(livro -> new LivroResponse(
+                        livro.getId(),
+                        livro.getTitulo(),
+                        livro.getResumo(),
+                        livro.getSumario(),
+                        livro.getPreco(),
+                        livro.getNumeroDePaginas(),
+                        livro.getIsbn(),
+                        livro.getDataPublicacao(),
+                        livro.getCategoria().getNome(),
+                        livro.getAutor().getNome())).collect(Collectors.toList());
+        }
 }

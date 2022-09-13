@@ -1,6 +1,4 @@
 package com.example.nossocartaodocumentacao.controller;
-
-import com.example.nossocartaodocumentacao.controller.factory.LivroFactory;
 import com.example.nossocartaodocumentacao.controller.response.LivroResponse;
 import com.example.nossocartaodocumentacao.model.Autor;
 import com.example.nossocartaodocumentacao.model.Livro;
@@ -33,7 +31,7 @@ public class ListarLivrosController {
 
         List<Livro> livros =  livroRepository.findAllByAutorId(id);
 
-        List<LivroResponse> livroResponses = LivroFactory.toResponseList(livros);
+        List<LivroResponse> livroResponses = LivroResponse.toResponseList(livros);
 
         return ResponseEntity.ok(livroResponses);
     }
