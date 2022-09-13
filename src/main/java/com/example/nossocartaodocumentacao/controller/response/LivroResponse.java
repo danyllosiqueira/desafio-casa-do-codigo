@@ -20,7 +20,7 @@ public record LivroResponse(
 
         BigDecimal preco,
 
-        int numeroDePaginas,
+        Integer numeroDePaginas,
 
         String isbn,
 
@@ -29,7 +29,9 @@ public record LivroResponse(
 
         String categoria,
 
-        String autor
+        String autor,
+
+        String autorDescricao
 ) {
         public static LivroResponse toResponse(Livro livro) {
                 return new LivroResponse(livro.getId(),
@@ -41,20 +43,22 @@ public record LivroResponse(
                         livro.getIsbn(),
                         livro.getDataPublicacao(),
                         livro.getCategoria().getNome(),
-                        livro.getAutor().getNome());
+                        livro.getAutor().getNome(),
+                        livro.getAutor().getDescricao());
         }
 
         public static List<LivroResponse> toResponseList(List<Livro> livrosList) {
                 return livrosList.stream().map(livro -> new LivroResponse(
                         livro.getId(),
                         livro.getTitulo(),
-                        livro.getResumo(),
-                        livro.getSumario(),
-                        livro.getPreco(),
-                        livro.getNumeroDePaginas(),
-                        livro.getIsbn(),
-                        livro.getDataPublicacao(),
-                        livro.getCategoria().getNome(),
-                        livro.getAutor().getNome())).collect(Collectors.toList());
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null)).collect(Collectors.toList());
         }
 }

@@ -33,7 +33,7 @@ public class Livro {
 
     @Column(nullable = false)
     @Min(100)
-    private int numeroDePaginas;
+    private Integer numeroDePaginas;
 
     @ISBN
     private String isbn;
@@ -84,7 +84,7 @@ public class Livro {
         return preco;
     }
 
-    public int getNumeroDePaginas() {
+    public @Min(100) Integer getNumeroDePaginas() {
         return numeroDePaginas;
     }
 
