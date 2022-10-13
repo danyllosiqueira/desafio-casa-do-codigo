@@ -1,0 +1,9 @@
+CREATE TABLE pais
+(
+    id   BIGINT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(255)          NOT NULL,
+    CONSTRAINT pk_pais PRIMARY KEY (id)
+);
+
+ALTER TABLE pais
+    ADD CONSTRAINT UK_PAIS_NOME UNIQUE (nome);

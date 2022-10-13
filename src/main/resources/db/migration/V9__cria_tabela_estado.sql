@@ -1,0 +1,13 @@
+CREATE TABLE estado
+(
+    id      BIGINT AUTO_INCREMENT NOT NULL,
+    nome    VARCHAR(255),
+    pais_id BIGINT,
+    CONSTRAINT pk_estado PRIMARY KEY (id)
+);
+
+ALTER TABLE estado
+    ADD CONSTRAINT UK_ESTATO_NOME_ID UNIQUE (nome, pais_id);
+
+ALTER TABLE estado
+    ADD CONSTRAINT FK_ESTADO_ON_PAIS FOREIGN KEY (pais_id) REFERENCES pais (id);
