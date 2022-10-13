@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:h2:~/ecommerce
+    username: root
+    password: root
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jackson:
+    default-property-inclusion: non_null
+
+  flyway:
+    url: jdbc:h2:~/ecommerce
+    user: ${DATABASE_USER:root}
+    password: ${DATABASE_PASSWORD:root}
+

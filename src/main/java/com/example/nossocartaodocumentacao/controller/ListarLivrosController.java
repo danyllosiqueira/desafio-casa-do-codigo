@@ -23,7 +23,6 @@ public class ListarLivrosController {
         this.autorRepository = autorRepository;
     }
 
-
     @GetMapping("/autor/{id}")
     public ResponseEntity<?> listar(@PathVariable Long id) {
 
